@@ -145,8 +145,56 @@ sub _process_css {
 	my $self = shift;
 
 	$self->{'css'}->put(
+		['s', '.'.$self->{'css_register'}],
+		['d', 'width', $self->{'width'}],
+		['d', 'background-color', '#f2f2f2'],
+		['d', 'padding', '20px'],
+		['d', 'border-radius', '5px'],
+		['d', 'box-shadow', '0 0 10px rgba(0, 0, 0, 0.2)'],
+		['e'],
+
 		['s', '.'.$self->{'css_register'}.' fieldset'],
-		['d', 'border-color', 'red'],
+		['d', 'border', 'none'],
+		['d', 'padding', 0],
+		['d', 'margin-bottom', '20px'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' legend'],
+		['d', 'font-weight', 'bold'],
+		['d', 'margin-bottom', '10px'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' p'],
+		['d', 'margin', 0],
+		['d', 'padding', '10px 0'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' label'],
+		['d', 'display', 'block'],
+		['d', 'font-weight', 'bold'],
+		['d', 'margin-bottom', '5px'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' input[type="text"]'],
+		['s', '.'.$self->{'css_register'}.' input[type="password"]'],
+		['d', 'width', '100%'],
+		['d', 'padding', '8px'],
+		['d', 'border', '1px solid #ccc'],
+		['d', 'border-radius', '3px'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' button[type="submit"]'],
+		['d', 'width', '100%'],
+		['d', 'padding', '10px'],
+		['d', 'background-color', '#4CAF50'],
+		['d', 'color', '#fff'],
+		['d', 'border', 'none'],
+		['d', 'border-radius', '3px'],
+		['d', 'cursor', 'pointer'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' button[type="submit"]:hover'],
+		['d', 'background-color', '#45a049'],
 		['e'],
 	);
 
