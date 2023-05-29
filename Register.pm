@@ -19,8 +19,11 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['form_method', 'lang', 'link', 'title', 'text'], @params);
+		['css_register', 'form_method', 'lang', 'link', 'title', 'text'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
+
+	# CSS style for register box.
+	$self->{'css_register'} = 'form-register';
 
 	# Form method.
 	$self->{'form_method'} = 'post';
@@ -75,7 +78,7 @@ sub _process {
 	# Main content.
 	$self->{'tags'}->put(
 		['b', 'form'],
-		['a', 'class', 'form-register'],
+		['a', 'class', $self->{'css_register'}],
 		['a', 'method', $self->{'form_method'}],
 
 		['b', 'fieldset'],
@@ -142,7 +145,7 @@ sub _process_css {
 	my $self = shift;
 
 	$self->{'css'}->put(
-		['s', '.form-register fieldset'],
+		['s', '.'.$self->{'css_register'}.' fieldset'],
 		['d', 'border-color', 'red'],
 		['e'],
 	);
