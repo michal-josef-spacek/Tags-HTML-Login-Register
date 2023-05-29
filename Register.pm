@@ -19,7 +19,7 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_register', 'form_method', 'lang', 'link', 'title', 'text'], @params);
+		['css_register', 'form_method', 'lang', 'link', 'title', 'text', 'width'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	# CSS style for register box.
@@ -41,6 +41,9 @@ sub new {
 			'username_label' => 'User name',
 		},
 	};
+
+	# Login box width.
+	$self->{'width'} = '300px';
 
 	# Process params.
 	set_params($self, @{$object_params_ar});
