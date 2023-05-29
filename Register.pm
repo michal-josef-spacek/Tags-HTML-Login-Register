@@ -295,9 +295,7 @@ Returns undef.
 
  # Process login button.
  $obj->process_css;
- $tags->put(['b', 'body']);
  $obj->process;
- $tags->put(['e', 'body']);
 
  # Print out.
  print "CSS\n";
