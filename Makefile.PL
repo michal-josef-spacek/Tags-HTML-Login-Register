@@ -20,7 +20,7 @@ readme_from 'Register.pm';
 recursive_author_tests('xt');
 requires 'Class::Utils' => 0;
 requires 'Error::Pure' => 0;
-requires 'List::MoreUtils' => 0;
+requires 'List::Util' => 1.33;
 requires 'Readonly' => 0;
 requires 'Tags::HTML' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Tags-HTML-Login-Register/issues';
