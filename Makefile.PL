@@ -27,7 +27,6 @@ resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Tags-HTML-Logi
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Tags-HTML-Login-Register';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Tags-HTML-Login-Register';
 test_requires 'CSS::Struct::Output::Raw' => 0;
-test_requires 'CSS::Struct::Output::Structure' => 0;
 test_requires 'Tags::Output::Raw' => 0;
 test_requires 'Tags::Output::Structure' => 0;
 test_requires 'Test::More' => 0;
