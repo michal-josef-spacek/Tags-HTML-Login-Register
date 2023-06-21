@@ -17,6 +17,7 @@ MANIFEST			This list of files
 META.yml
 README
 Register.pm
+SIGNATURE
 t/Tags-HTML-Login-Register/01-use.t
 t/Tags-HTML-Login-Register/02-version.t
 t/Tags-HTML-Login-Register/03-new.t
