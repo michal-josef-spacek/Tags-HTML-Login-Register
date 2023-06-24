@@ -8,6 +8,7 @@ use Class::Utils qw(set_params split_params);
 use Error::Pure qw(err);
 use List::Util qw(none);
 use Readonly;
+use Scalar::Util qw(blessed);
 
 Readonly::Array our @FORM_METHODS => qw(post get);
 
@@ -72,7 +73,15 @@ sub new {
 
 # Process 'Tags'.
 sub _process {
-	my $self = shift;
+	my ($self, $messages_ar) = @_;
+
+	if (defined $messages_ar) {
+		foreach my $message (@{$messages_ar}) {
+			if (! blessed($message) || ! $message->isa('Data::Message::Simple')) {
+				err "Message must be a instance of 'Data::Message::Simple' object.";
+			}
+		}
+	}
 
 	my $username_id = 'username';
 	my $password1_id = 'password1';
@@ -125,7 +134,6 @@ sub _process {
 		['e', 'input'],
 		['e', 'p'],
 
-
 		['b', 'p'],
 		['b', 'button'],
 		['a', 'type', 'submit'],
@@ -136,7 +144,38 @@ sub _process {
 		['e', 'p'],
 
 		['e', 'fieldset'],
+	);
 
+	if (defined $messages_ar) {
+		$self->{'tags'}->put(
+			['b', 'div'],
+			['a', 'class', 'messages'],
+		);
+		my $count = 0;
+		foreach my $message (@{$messages_ar}) {
+			$count++;
+			if ($count > 1) {
+				$self->{'tags'}->put(
+					['b', 'br'],
+					['e', 'br'],
+				);
+			}
+			$self->{'tags'}->put(
+				['b', 'span'],
+				defined $message->lang
+					? (['a', 'lang', $message->lang])
+					: (),
+				['a', 'class', $message->type],
+				['d', $message->text],
+				['e', 'span'],
+			);
+		}
+		$self->{'tags'}->put(
+			['e', 'div'],
+		);
+	}
+
+	$self->{'tags'}->put(
 		['e', 'form'],
 	);
 
@@ -145,7 +184,11 @@ sub _process {
 
 # Process 'CSS::Struct'.
 sub _process_css {
-	my $self = shift;
+	my ($self, $message_types_hr) = @_;
+
+	if (defined $message_types_hr && ref $message_types_hr ne 'HASH') {
+		err 'Message types must be a hash reference.';
+	}
 
 	$self->{'css'}->put(
 		['s', '.'.$self->{'css_register'}],
@@ -199,7 +242,19 @@ sub _process_css {
 		['s', '.'.$self->{'css_register'}.' button[type="submit"]:hover'],
 		['d', 'background-color', '#45a049'],
 		['e'],
+
+		['s', '.'.$self->{'css_register'}.' .messages'],
+		['d', 'text-align', 'center'],
+		['e'],
 	);
+
+	foreach my $message_type (keys %{$message_types_hr}) {
+		$self->{'css'}->put(
+			['s', '.'.$message_type],
+			['d', 'color', $message_types_hr->{$message_type}],
+			['e'],
+		);
+	}
 
 	return;
 }
@@ -232,8 +287,8 @@ Tags::HTML::Login::Register - Tags helper for login register.
  use Tags::HTML::Login::Register;
 
  my $obj = Tags::HTML::Login::Register->new(%params);
- $obj->process;
- $obj->process_css;
+ $obj->process($messages_ar);
+ $obj->process_css($message_types_hr);
 
 =head1 METHODS
 
@@ -296,17 +351,21 @@ Default value is:
 
 =head2 C<process>
 
- $obj->process($percent_value);
+ $obj->process($messages_ar);
 
-Process Tags structure for gradient.
+Process Tags structure for register form.
+Variable C<$message_ar> is reference to array with L<Data::Message::Simple>
+instances.
 
 Returns undef.
 
 =head2 C<process_css>
 
- $obj->process_css;
+ $obj->process_css($message_types_hr);
 
-Process CSS::Struct structure for output.
+Process CSS::Struct structure for register form.
+Variable C<$message_types_hr> is reference to hash with message type keys and
+CSS color as value. Message types are defined in L<Data::Message::Simple>.
 
 Returns undef.
 
@@ -322,10 +381,12 @@ Returns undef.
  process():
          From Tags::HTML::process():
                  Parameter 'tags' isn't defined.
+         Message must be a instance of 'Data::Message::Simple' object.
 
  process_css():
          From Tags::HTML::process_css():
                  Parameter 'css' isn't defined.
+         Message types must be a hash reference.
 
 =head1 EXAMPLE
 

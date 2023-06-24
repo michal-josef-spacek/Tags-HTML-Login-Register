@@ -5,8 +5,8 @@ SYNOPSIS
      use Tags::HTML::Login::Register;
 
      my $obj = Tags::HTML::Login::Register->new(%params);
-     $obj->process;
-     $obj->process_css;
+     $obj->process($messages_ar);
+     $obj->process_css($message_types_hr);
 
 METHODS
   "new"
@@ -63,16 +63,19 @@ METHODS
              }
 
   "process"
-     $obj->process($percent_value);
+     $obj->process($messages_ar);
 
-    Process Tags structure for gradient.
+    Process Tags structure for register form. Variable $message_ar is
+    reference to array with Data::Message::Simple instances.
 
     Returns undef.
 
   "process_css"
-     $obj->process_css;
+     $obj->process_css($message_types_hr);
 
-    Process CSS::Struct structure for output.
+    Process CSS::Struct structure for register form. Variable
+    $message_types_hr is reference to hash with message type keys and CSS
+    color as value. Message types are defined in Data::Message::Simple.
 
     Returns undef.
 
@@ -87,10 +90,12 @@ ERRORS
      process():
              From Tags::HTML::process():
                      Parameter 'tags' isn't defined.
+             Message must be a instance of 'Data::Message::Simple' object.
 
      process_css():
              From Tags::HTML::process_css():
                      Parameter 'css' isn't defined.
+             Message types must be a hash reference.
 
 EXAMPLE
      use strict;
