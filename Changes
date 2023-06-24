@@ -1,5 +1,6 @@
 0.02
  - Add messages bellow button.
+ - Add tests for constructor.
 
 0.01 2023-06-21T12:38:27+02:00
  - First version.

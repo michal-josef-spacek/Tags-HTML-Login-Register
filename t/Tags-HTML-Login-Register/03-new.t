@@ -6,7 +6,7 @@ use English;
 use Error::Pure::Utils qw(clean);
 use Tags::HTML::Login::Register;
 use Tags::Output::Raw;
-use Test::More 'tests' => 6;
+use Test::More 'tests' => 10;
 use Test::NoWarnings;
 
 # Test.
@@ -62,4 +62,44 @@ is(
 	"Parameter 'css' must be a 'CSS::Struct::Output::*' class.\n",
 	"Bad 'CSS::Struct::Output' instance.",
 );
+clean();
+
+# Test.
+eval {
+	Tags::HTML::Login::Register->new(
+		'form_method' => 'foo',
+	);
+};
+is($EVAL_ERROR, "Parameter 'form_method' has bad value.\n",
+	"Parameter 'form_method' has bad value.");
+clean();
+
+# Test.
+eval {
+	Tags::HTML::Login::Register->new(
+		'text' => undef,
+	);
+};
+is($EVAL_ERROR, "Parameter 'text' is required.\n",
+	"Parameter 'text' is required.");
+clean();
+
+# Test.
+eval {
+	Tags::HTML::Login::Register->new(
+		'text' => [],
+	);
+};
+is($EVAL_ERROR, "Parameter 'text' must be a hash with language texts.\n",
+	"Parameter 'text' must be a hash with language texts.");
+clean();
+
+# Test.
+eval {
+	Tags::HTML::Login::Register->new(
+		'text' => {},
+	);
+};
+is($EVAL_ERROR, "Texts for language 'eng' doesn't exist.\n",
+	"Texts for language 'eng' doesn't exist.");
 clean();
