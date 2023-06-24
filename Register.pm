@@ -146,7 +146,7 @@ sub _process {
 		['e', 'fieldset'],
 	);
 
-	if (defined $messages_ar) {
+	if (defined $messages_ar && @{$messages_ar}) {
 		$self->{'tags'}->put(
 			['b', 'div'],
 			['a', 'class', 'messages'],
