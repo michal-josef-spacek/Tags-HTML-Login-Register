@@ -76,6 +76,9 @@ sub _process {
 	my ($self, $messages_ar) = @_;
 
 	if (defined $messages_ar) {
+		if (ref $messages_ar ne 'ARRAY') {
+			err "Bad list of messages.";
+		}
 		foreach my $message (@{$messages_ar}) {
 			if (! blessed($message) || ! $message->isa('Data::Message::Simple')) {
 				err "Message must be a instance of 'Data::Message::Simple' object.";
