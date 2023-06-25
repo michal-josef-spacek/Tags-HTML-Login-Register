@@ -82,7 +82,10 @@ $css = CSS::Struct::Output::Structure->new;
 $obj = Tags::HTML::Login::Register->new(
 	'css' => $css,
 );
-$obj->process_css({'error' => 'red'});
+$obj->process_css({
+	'error' => 'red',
+	'info' => 'green',
+});
 $ret_ar = $css->flush(1);
 is_deeply(
 	$ret_ar,
@@ -145,6 +148,10 @@ is_deeply(
 
 		['s', '.error'],
 		['d', 'color', 'red'],
+		['e'],
+
+		['s', '.info'],
+		['d', 'color', 'green'],
 		['e'],
 	],
 	'Form CSS with message types.',
