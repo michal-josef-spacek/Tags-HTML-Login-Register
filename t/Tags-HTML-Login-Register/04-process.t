@@ -38,6 +38,7 @@ is_deeply(
 		['a', 'type', 'text'],
 		['a', 'name', 'username'],
 		['a', 'id', 'username'],
+		['a', 'autofocus', 'autofocus'],
 		['e', 'input'],
 		['e', 'p'],
 
@@ -108,6 +109,7 @@ is_deeply(
 		['a', 'type', 'text'],
 		['a', 'name', 'username'],
 		['a', 'id', 'username'],
+		['a', 'autofocus', 'autofocus'],
 		['e', 'input'],
 		['e', 'p'],
 
@@ -187,6 +189,7 @@ is_deeply(
 		['a', 'type', 'text'],
 		['a', 'name', 'username'],
 		['a', 'id', 'username'],
+		['a', 'autofocus', 'autofocus'],
 		['e', 'input'],
 		['e', 'p'],
 
