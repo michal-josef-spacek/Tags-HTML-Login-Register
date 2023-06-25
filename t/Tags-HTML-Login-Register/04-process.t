@@ -7,7 +7,7 @@ use Error::Pure::Utils qw(clean);
 use Tags::HTML::Login::Register;
 use Tags::Output::Structure;
 use Test::MockObject;
-use Test::More 'tests' => 8;
+use Test::More 'tests' => 9;
 use Test::NoWarnings;
 
 # Test.
@@ -292,3 +292,17 @@ eval {
 is($EVAL_ERROR, "Bad message data object.\n",
 	"Bad message data object.");
 clean();
+
+# Test.
+$tags = Tags::Output::Structure->new;
+$obj = Tags::HTML::Login::Register->new(
+	'tags' => $tags,
+	'text' => {
+		'eng' => {},
+	},
+);
+eval {
+	$obj->process;
+};
+is($EVAL_ERROR, "Text for lang 'eng' and key 'register' doesn't exist.\n",
+	"Text for lang 'eng' and key 'register' doesn't exist.");
