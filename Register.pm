@@ -162,10 +162,10 @@ sub _process {
 			}
 			$self->{'tags'}->put(
 				['b', 'span'],
+				['a', 'class', $message->type],
 				defined $message->lang
 					? (['a', 'lang', $message->lang])
 					: (),
-				['a', 'class', $message->type],
 				['d', $message->text],
 				['e', 'span'],
 			);
