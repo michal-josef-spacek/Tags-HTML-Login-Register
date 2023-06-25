@@ -205,7 +205,8 @@ EXAMPLE
      # </form>
 
 DEPENDENCIES
-    Class::Utils, Error::Pure, List::Util, Readonly, Tags::HTML.
+    Class::Utils, Error::Pure, List::Util, Readonly, Tags::HTML,
+    Tags::HTML::Messages.
 
 SEE ALSO
     Tags::HTML::Login::Access

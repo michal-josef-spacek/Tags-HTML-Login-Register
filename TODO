@@ -1,7 +1,6 @@
 TODO
 ====
 1. Rewrite to Tags::HTML::Form
-4. Rewrite to Tags::HTML::Messages.
 5.
 
 Applied
@@ -10,4 +9,7 @@ Applied
 OK [20230624] skim
 
 2. Tests.
+OK [20230625] skim
+
+4. Rewrite to Tags::HTML::Messages.
 OK [20230625] skim

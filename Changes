@@ -5,6 +5,7 @@
  - Change error for bad message object to common sentence.
  - Fix test message.
  - Move lang attribute after class attribute.
+ - Rewrite messages to use Tags::HTML::Messages helper.
 
 0.02 2023-06-24T17:34:48+02:00
  - Add messages bellow button.

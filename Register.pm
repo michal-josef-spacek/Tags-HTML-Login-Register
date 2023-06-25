@@ -9,6 +9,7 @@ use Error::Pure qw(err);
 use List::Util qw(none);
 use Readonly;
 use Scalar::Util qw(blessed);
+use Tags::HTML::Messages;
 
 Readonly::Array our @FORM_METHODS => qw(post get);
 
@@ -67,6 +68,12 @@ sub new {
 		err "Texts for language '$self->{'lang'}' doesn't exist.";
 	}
 
+	$self->{'_tags_messages'} = Tags::HTML::Messages->new(
+		'css' => $self->{'css'},
+		'flag_no_messages' => 0,
+		'tags' => $self->{'tags'},
+	);
+
 	# Object.
 	return $self;
 }
@@ -74,17 +81,6 @@ sub new {
 # Process 'Tags'.
 sub _process {
 	my ($self, $messages_ar) = @_;
-
-	if (defined $messages_ar) {
-		if (ref $messages_ar ne 'ARRAY') {
-			err "Bad list of messages.";
-		}
-		foreach my $message (@{$messages_ar}) {
-			if (! blessed($message) || ! $message->isa('Data::Message::Simple')) {
-				err 'Bad message data object.';
-			}
-		}
-	}
 
 	my $username_id = 'username';
 	my $password1_id = 'password1';
@@ -149,34 +145,7 @@ sub _process {
 		['e', 'fieldset'],
 	);
 
-	if (defined $messages_ar && @{$messages_ar}) {
-		$self->{'tags'}->put(
-			['b', 'div'],
-			['a', 'class', 'messages'],
-		);
-		my $count = 0;
-		foreach my $message (@{$messages_ar}) {
-			$count++;
-			if ($count > 1) {
-				$self->{'tags'}->put(
-					['b', 'br'],
-					['e', 'br'],
-				);
-			}
-			$self->{'tags'}->put(
-				['b', 'span'],
-				['a', 'class', $message->type],
-				defined $message->lang
-					? (['a', 'lang', $message->lang])
-					: (),
-				['d', $message->text],
-				['e', 'span'],
-			);
-		}
-		$self->{'tags'}->put(
-			['e', 'div'],
-		);
-	}
+	$self->{'_tags_messages'}->process($messages_ar);
 
 	$self->{'tags'}->put(
 		['e', 'form'],
@@ -188,10 +157,6 @@ sub _process {
 # Process 'CSS::Struct'.
 sub _process_css {
 	my ($self, $message_types_hr) = @_;
-
-	if (defined $message_types_hr && ref $message_types_hr ne 'HASH') {
-		err 'Message types must be a hash reference.';
-	}
 
 	$self->{'css'}->put(
 		['s', '.'.$self->{'css_register'}],
@@ -251,13 +216,7 @@ sub _process_css {
 		['e'],
 	);
 
-	foreach my $message_type (keys %{$message_types_hr}) {
-		$self->{'css'}->put(
-			['s', '.'.$message_type],
-			['d', 'color', $message_types_hr->{$message_type}],
-			['e'],
-		);
-	}
+	$self->{'_tags_messages'}->process_css($message_types_hr);
 
 	return;
 }
@@ -507,7 +466,8 @@ L<Class::Utils>,
 L<Error::Pure>,
 L<List::Util>,
 L<Readonly>,
-L<Tags::HTML>.
+L<Tags::HTML>,
+L<Tags::HTML::Messages>.
 
 =head1 SEE ALSO
 

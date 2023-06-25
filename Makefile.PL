@@ -24,6 +24,7 @@ requires 'List::Util' => 1.33;
 requires 'Readonly' => 0;
 requires 'Scalar::Util' => 0;
 requires 'Tags::HTML' => 0;
+requires 'Tags::HTML::Messages' => 0.08;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Tags-HTML-Login-Register/issues';
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Tags-HTML-Login-Register';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Tags-HTML-Login-Register';
