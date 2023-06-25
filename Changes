@@ -1,3 +1,5 @@
+0.04
+
 0.03 2023-06-25T11:51:17+02:00
  - Add another error check for message array.
  - Add missing error to process() about missing text.
