@@ -35,7 +35,7 @@ requires:
   Readonly: 0
   Scalar::Util: 0
   Tags::HTML: 0
-  Tags::HTML::Messages: 0.08
+  Tags::HTML::Messages: 0.09
   perl: 5.8.0
 resources:
   bugtracker: https://github.com/michal-josef-spacek/Tags-HTML-Login-Register/issues
