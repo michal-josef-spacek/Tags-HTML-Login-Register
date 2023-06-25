@@ -1,7 +1,6 @@
 TODO
 ====
 1. Rewrite to Tags::HTML::Form
-2. Tests.
 4. Rewrite to Tags::HTML::Messages.
 5.
 
@@ -9,3 +8,6 @@ Applied
 =======
 3. Add messages bellow register button.
 OK [20230624] skim
+
+2. Tests.
+OK [20230625] skim

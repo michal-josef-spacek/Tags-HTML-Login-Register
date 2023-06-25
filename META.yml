@@ -5,9 +5,11 @@ author:
 build_requires:
   CSS::Struct::Output::Raw: 0
   CSS::Struct::Output::Structure: 0
+  Data::Message::Simple: 0
   ExtUtils::MakeMaker: 6.59
   Tags::Output::Raw: 0
   Tags::Output::Structure: 0
+  Test::MockObject: 0
   Test::More: 0
   Test::NoWarnings: 0
 configure_requires:
