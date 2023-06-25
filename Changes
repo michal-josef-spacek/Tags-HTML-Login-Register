@@ -1,6 +1,7 @@
 0.03
  - Add another error check for message array.
  - Add tests for process_css().
+ - Change error for bad message object to common sentence.
  - Fix test message.
  - Move lang attribute after class attribute.
 

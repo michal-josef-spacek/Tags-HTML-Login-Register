@@ -81,7 +81,7 @@ sub _process {
 		}
 		foreach my $message (@{$messages_ar}) {
 			if (! blessed($message) || ! $message->isa('Data::Message::Simple')) {
-				err "Message must be a instance of 'Data::Message::Simple' object.";
+				err 'Bad message data object.';
 			}
 		}
 	}
@@ -384,7 +384,7 @@ Returns undef.
  process():
          From Tags::HTML::process():
                  Parameter 'tags' isn't defined.
-         Message must be a instance of 'Data::Message::Simple' object.
+         Bad message data object.
 
  process_css():
          From Tags::HTML::process_css():

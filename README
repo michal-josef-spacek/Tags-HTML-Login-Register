@@ -90,7 +90,7 @@ ERRORS
      process():
              From Tags::HTML::process():
                      Parameter 'tags' isn't defined.
-             Message must be a instance of 'Data::Message::Simple' object.
+             Bad message data object.
 
      process_css():
              From Tags::HTML::process_css():
