@@ -344,6 +344,7 @@ Returns undef.
          From Tags::HTML::process():
                  Parameter 'tags' isn't defined.
          Bad message data object.
+         Text for lang '%s' and key '%s' doesn't exist.
 
  process_css():
          From Tags::HTML::process_css():
