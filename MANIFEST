@@ -22,5 +22,6 @@ t/Tags-HTML-Login-Register/01-use.t
 t/Tags-HTML-Login-Register/02-version.t
 t/Tags-HTML-Login-Register/03-new.t
 t/Tags-HTML-Login-Register/04-process.t
+t/Tags-HTML-Login-Register/05-process_css.t
 xt/Tags-HTML-Login-Register/01-pod_coverage.t
 xt/Tags-HTML-Login-Register/02-pod.t
