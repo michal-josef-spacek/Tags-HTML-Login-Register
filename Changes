@@ -1,3 +1,5 @@
+0.06
+
 0.05 2023-06-26T00:13:09+02:00
  - Add second message type to CSS test.
  - Fix minimal dependency for Tags::HTML::Messages message types.
