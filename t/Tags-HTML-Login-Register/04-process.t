@@ -75,7 +75,7 @@ is_deeply(
 		['e', 'fieldset'],
 		['e', 'form'],
 	],
-	'Default login button.',
+	'Default registering form.',
 );
 
 # Test.
