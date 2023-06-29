@@ -352,7 +352,7 @@ Returns undef.
                  Parameter 'css' isn't defined.
          Message types must be a hash reference.
 
-=head1 EXAMPLE
+=head1 EXAMPLE1
 
 =for comment filename=print_block_html_and_css.pl
 
@@ -461,6 +461,53 @@ Returns undef.
  #     </p>
  #   </fieldset>
  # </form>
+
+=head1 EXAMPLE2
+
+=for comment filename=plack_app_login_register.pl
+
+ use strict;
+ use warnings;
+ 
+ use CSS::Struct::Output::Indent;
+ use Plack::App::Tags::HTML;
+ use Plack::Runner;
+ use Tags::HTML::Login::Register;
+ use Tags::Output::Indent;
+ use Unicode::UTF8 qw(decode_utf8);
+ 
+ my $css = CSS::Struct::Output::Indent->new;
+ my $tags = Tags::Output::Indent->new(
+         'xml' => 1,
+         'preserved' => ['style'],
+ );
+ my $register = Tags::HTML::Login::Register->new(
+         'css' => $css,
+         'tags' => $tags,
+ );
+ $register->process_css;
+ my $app = Plack::App::Tags::HTML->new(
+         'component' => 'Tags::HTML::Container',
+         'data' => [sub {
+                 my $self = shift;
+                 $register->process;
+                 return;
+         }],
+         'css' => $css,
+         'tags' => $tags,
+         'title' => 'Register',
+ )->to_app;
+ Plack::Runner->new->run($app);
+
+ # Output screenshot is in images/ directory.
+
+=begin html
+
+<a href="https://raw.githubusercontent.com/michal-josef-spacek/Tags-HTML-Login-Register/master/images/plack_app_login_register.png">
+  <img src="https://raw.githubusercontent.com/michal-josef-spacek/Tags-HTML-Login-Register/master/images/plack_app_login_register.png" alt="Web app example" width="300px" height="300px" />
+</a>
+
+=end html
 
 =head1 DEPENDENCIES
 
