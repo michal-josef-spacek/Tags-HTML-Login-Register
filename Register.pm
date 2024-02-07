@@ -277,7 +277,7 @@ Possible values are 'post' and 'get'.
 
 Default value is 'post'.
 
-=item * C<language>
+=item * C<lang>
 
 Language in ISO 639-3 code.
 

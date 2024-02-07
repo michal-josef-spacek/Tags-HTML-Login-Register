@@ -28,7 +28,7 @@ METHODS
 
             Default value is 'post'.
 
-    *       "language"
+    *       "lang"
 
             Language in ISO 639-3 code.
 
