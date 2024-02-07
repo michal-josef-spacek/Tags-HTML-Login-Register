@@ -20,6 +20,12 @@ METHODS
 
             Default value is undef.
 
+    *       "css_register"
+
+            CSS class for form.
+
+            Default value is 'form-register'.
+
     *       "form_method"
 
             Form method.

@@ -269,6 +269,12 @@ Constructor.
 
 Default value is undef.
 
+=item * C<css_register>
+
+CSS class for form.
+
+Default value is 'form-register'.
+
 =item * C<form_method>
 
 Form method.
