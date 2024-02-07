@@ -235,7 +235,6 @@ EXAMPLE2
              }],
              'css' => $css,
              'tags' => $tags,
-             'title' => 'Register',
      )->to_app;
      Plack::Runner->new->run($app);
 

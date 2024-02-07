@@ -21,7 +21,7 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_register', 'form_method', 'lang', 'link', 'title', 'text', 'width'], @params);
+		['css_register', 'form_method', 'lang', 'link', 'text', 'width'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	# CSS style for register box.
@@ -495,7 +495,6 @@ Returns undef.
          }],
          'css' => $css,
          'tags' => $tags,
-         'title' => 'Register',
  )->to_app;
  Plack::Runner->new->run($app);
 
