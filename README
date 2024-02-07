@@ -14,8 +14,6 @@ METHODS
 
     Constructor.
 
-    Returns instance of object.
-
     *       "css"
 
             'CSS::Struct::Output' object for process_css processing.
@@ -61,6 +59,8 @@ METHODS
                             'submit' => 'Register',
                     },
              }
+
+    Returns instance of object.
 
   "process"
      $obj->process($messages_ar);

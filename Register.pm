@@ -261,8 +261,6 @@ Tags::HTML::Login::Register - Tags helper for login register.
 
 Constructor.
 
-Returns instance of object.
-
 =over 8
 
 =item * C<css>
@@ -311,6 +309,8 @@ Default value is:
  }
 
 =back
+
+Returns instance of object.
 
 =head2 C<process>
 
