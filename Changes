@@ -3,6 +3,7 @@
  - Fix typo in doc (language -> lang).
  - Improve doc.
  - Remove obsolete code.
+ - Remove obsolete dependency.
  - Update copyright years.
 
 0.06 2023-06-29T19:49:02+02:00
