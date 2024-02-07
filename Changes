@@ -1,4 +1,4 @@
-0.07
+0.07 2024-02-07T21:00:52+01:00
  - Add missing 'css_register' parameter to doc.
  - Fix typo in doc (language -> lang).
  - Improve doc.
