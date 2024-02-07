@@ -1,7 +1,8 @@
 TODO
 ====
 1. Rewrite to Tags::HTML::Element
-5.
+5. Rewrite to init() and cleanup()
+6.
 
 Applied
 =======
