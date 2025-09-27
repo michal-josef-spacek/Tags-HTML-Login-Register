@@ -40,6 +40,12 @@ METHODS
 
             Default value is 'eng'.
 
+    *       "logo_image_url"
+
+            URL to logo image.
+
+            Default value is undef.
+
     *       "tags"
 
             'Tags::Output' object.

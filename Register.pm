@@ -20,7 +20,8 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_register', 'form_method', 'lang', 'text', 'width'], @params);
+		['css_register', 'form_method', 'lang', 'logo_image_url',
+		'text', 'width'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	# CSS style for register box.
@@ -31,6 +32,9 @@ sub new {
 
 	# Language.
 	$self->{'lang'} = 'eng';
+
+	# Logo.
+	$self->{'logo_image_url'} = undef;
 
 	# Language texts.
 	$self->{'text'} = {
@@ -95,7 +99,21 @@ sub _process {
 		['b', 'legend'],
 		['d', $self->_text('register')],
 		['e', 'legend'],
+	);
 
+	if (defined $self->{'logo_image_url'}) {
+		$self->{'tags'}->put(
+			['b', 'div'],
+			['a', 'class', 'logo'],
+			['b', 'img'],
+			['a', 'src', $self->{'logo_image_url'}],
+			['a', 'alt', 'logo'],
+			['e', 'img'],
+			['e', 'div'],
+		);
+	}
+
+	$self->{'tags'}->put(
 		['b', 'p'],
 		['b', 'label'],
 		['a', 'for', $username_id],
@@ -287,6 +305,12 @@ Default value is 'post'.
 Language in ISO 639-3 code.
 
 Default value is 'eng'.
+
+=item * C<logo_image_url>
+
+URL to logo image.
+
+Default value is undef.
 
 =item * C<tags>
 
