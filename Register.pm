@@ -191,6 +191,18 @@ sub _process_css {
 		['d', 'margin-bottom', '20px'],
 		['e'],
 
+		['s', '.'.$self->{'css_register'}.' .logo'],
+		['d', 'height', '5em'],
+		['d', 'width', '100%'],
+		['e'],
+
+		['s', '.'.$self->{'css_register'}.' img'],
+		['d', 'margin', 'auto'],
+		['d', 'display', 'block'],
+		['d', 'max-width', '100%'],
+		['d', 'max-height', '5em'],
+		['e'],
+
 		['s', '.'.$self->{'css_register'}.' legend'],
 		['d', 'font-weight', 'bold'],
 		['d', 'margin-bottom', '10px'],
@@ -423,6 +435,16 @@ Returns undef.
  # 	border: none;
  # 	padding: 0;
  # 	margin-bottom: 20px;
+ # }
+ # .form-register .logo {
+ #	height: 5em;
+ #	width: 100%;
+ # }
+ # .form-register img {
+ #	margin: auto;
+ #	display: block;
+ #	max-width: 100%;
+ #	max-height: 5em;
  # }
  # .form-register legend {
  # 	font-weight: bold;
